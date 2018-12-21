@@ -1,0 +1,26 @@
+---
+title: "San Diego Burritos - Bibliography and citation"
+author: "Mine Çetinkaya-Rundel"
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: cosmo
+references:
+- id: Kaggle18
+  title: Burritos in San Diego
+  author:
+  - family: Cole
+    given: Scott
+  URL: 'https://www.kaggle.com/srcole/burritos-in-san-diego'
+  type: article
+  issued:
+    year: 2018
+    month: 1
+---
+
+<!-- bibliography: bibliography.bib -->
+
+The data come from @Kaggle18.
+
+## References

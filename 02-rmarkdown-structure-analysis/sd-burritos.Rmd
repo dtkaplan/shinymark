@@ -1,0 +1,88 @@
+---
+title: "San Diego Burritos"
+author: "Mine Çetinkaya-Rundel"
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: cosmo
+---
+
+```{r load-packages}
+library(tidyverse)
+```
+
+# The data
+
+## Kaggle: SD Burritos
+
+The data come from [Kaggle.com](https://www.kaggle.com/srcole/burritos-in-san-diego):
+
+>Mexican cuisine is often the best food option is southern California. And the 
+>burrito is the hallmark of delicious taco shop food: tasty, cheap, and filling. 
+>Appropriately, an effort was launched to critique burritos across the county 
+>and make this data open to the lay burrito consumer. 
+
+```{r load-data}
+burritos <- read_csv("../data/burritos_01022018.csv")
+```
+
+## About the data
+
+At this time, the data set contains ratings from over `r nrow(burritos)` 
+burritos fromd `r burritos %>% count(Location) %>% nrow()` restaurants.
+
+There are 10 core dimensions of the San Diego burrito:
+
+ 1. Volume 
+ 1. Tortilla quality 
+ 1. Temperature 
+ 1. Meat quality 
+ 1. Non-meat filling quality 
+ 1. Meat-to-filling ratio 
+ 1. Uniformity 
+ 1. Salsa quality 
+ 1. Flavor synergy 
+ 1. Wrap integrity
+
+All of these measures (except for Volume) are rated on a scale from 0 to 5, 0 
+being terrible, and 5 being optimal. Other information available for each 
+burrito includes an overall rating, cost, Yelp rating of the restaurant, and more.
+
+## Glimpse at the data
+
+```{r}
+glimpse(burritos)
+```
+
+# Exploratory data analysis
+
+## Reviewer counts
+
+First let's take a look at who the reviewers are:
+
+```{r}
+burritos_rev_count <- burritos %>%
+  mutate(Reviewer = fct_lump(Reviewer, n = 5)) %>%
+  count(Reviewer) %>%
+  mutate(Reviewer = fct_reorder(Reviewer, n, .desc = TRUE)) %>%
+  arrange(desc(n))
+burritos_rev_count
+ggplot(data = burritos_rev_count, mapping = aes(x = Reviewer, y = n)) +
+    geom_bar(stat = "identity") +
+    labs(title = "Distribution of reviewers", x = "", y = "")
+```
+
+Seems like `r burritos_rev_count$Reviewer[1]`  has been eating a lot of burritos!
+
+## Overall rating vs. cost
+
+Next we visualize the relationship between the cost and overall rating of the 
+burritos. The relationship appears to be positive, though the one extremely 
+expensive burrito makes it difficult to assess the strength of the relationship.
+
+```{r}
+ggplot(data = burritos, mapping = aes(x = Cost, y = overall)) +
+  geom_point() +
+  labs(title = "Overall rating vs. cost", y = "Overall rating")
+```

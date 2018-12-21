@@ -1,0 +1,40 @@
+---
+title: "San Diego Burritos - Parametrized"
+author: "Mine Çetinkaya-Rundel"
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: cosmo
+params:
+   Reviewer: 
+     label: "Reviewer:"
+     value: Scott
+     input: select
+     choices: [Scott, Emily, Ricardo, Sage, Luis, Richard]
+---
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+```
+
+## Kaggle: SD Burritos
+
+The data come from [Kaggle.com](https://www.kaggle.com/srcole/burritos-in-san-diego). In this analysis we focus on burritos reviewed by `r params$Reviewer` only.
+
+```{r load-filter-data, message=FALSE, warning=FALSE}
+burritos <- read_csv("../data/burritos_01022018.csv") %>%
+  filter(Reviewer == params$Reviewer)
+```
+
+The data set contains `r nrow(burritos)` burritos reviewed by `r params$Reviewer` 
+from `r burritos %>% count(Location) %>% nrow()` restaurants.
+
+The scatterplot below displays the relationship between the cost and overall 
+rating of the burritos for burritos reviewed by `r params$Reviewer`.
+
+```{r rating-cost-scatter, warning=FALSE}
+ggplot(data = burritos, mapping = aes(x = Cost, y = overall)) +
+  geom_point() +
+  labs(title = "Overall rating vs. cost", y = "Overall rating")
+```

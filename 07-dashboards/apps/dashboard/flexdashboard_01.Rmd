@@ -1,0 +1,61 @@
+---
+title: "flexdashboard + shiny"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Scatterplot of weight and miles per gallon
+
+```{r}
+mpg_subset <- reactive({
+  mtcars %>%
+    filter(
+      hp >= input$hp[1],
+      hp <= input$hp[2],
+      cyl %in% input$cyl
+    )
+})
+
+renderPlot({
+  ggplot(mpg_subset(), aes(x = wt, y = mpg, color = factor(cyl))) +
+    geom_point()
+})
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Inputs
+
+```{r}
+checkboxGroupInput("cyl", "Cylinders", choices = c("4", "6", "8"),
+                   selected = c("4", "6", "8"), inline = TRUE
+                   )
+
+sliderInput("hp", "Horsepower",
+            min = min(mtcars$hp), max = max(mtcars$hp),
+            value = range(mtcars$hp)
+            )
+```
+
+### Histogram of weight
+
+```{r}
+renderPlot({
+  
+  ggplot(mpg_subset(), aes(x = wt)) +
+    geom_histogram(binwidth = 0.25)
+
+})
+```
