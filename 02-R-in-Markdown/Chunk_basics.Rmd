@@ -48,29 +48,25 @@ mod <- lm(mpg ~ disp + cyl, data = mtcars)
 5. Display the first 5 rows of the `mtcars` data frame.
 
 
+```{r the_table}
+knitr::kable(head(mtcars))
+```
+
+
 **Stretch goal**: Modify the chunk with the table to prettify the display. There are many possibilities but try `knitr::kable()`.
 
 
 
-## Things can go wrong.
+## When your code goes wrong
 
-### A chunk with an error
+A chunk with an error ...
 
 ```{r neg_logs, eval = FALSE}
 log(-10)
 ```
 
-### Trying to put a plot inline
+... and another such chunk.
 
-Here's the creation of a plot:
-```{r carplot}
-Plot1 <-
-  ggplot(data = mtcars, aes(x = hp, y = mpg, color = cyl)) +
-  geom_point()
-```  
-
-Let's put the plot inline^[Change `rbogus` to `r` to activate the inline code], right here: `rbogus Plot1`.
-
-```{r another_error, error = TRUE}
+```{r another_error, eval = FALSE}
 sqrt(-5)
 ```
