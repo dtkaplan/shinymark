@@ -1,27 +1,41 @@
 ---
 title: "San Diego Burritos"
 author: "Mine Çetinkaya-Rundel"
-date: "`r Sys.Date()`"
-output: 
-  html_document: 
+date: "January 15, 2019"
+output:
+  html_document:
     highlight: pygments
     theme: cosmo
+  pdf_document: default
 ---
 
 ```{r load-packages}
 library(tidyverse)
 ```
 
+### Preliminary tasks
+
+1. It's a good practice to load the major packages for a document in a "setup" or "load packages" chunk. But the output from that chunk is a poor way for a reader to start off with a document.
+    * Add a chunk option to `load-packages` to suppress the output. (Hint: the option begins with `i`.)
+2. Add an inline R chunk to your document so that the current date/time show up here: XXXX. 
+3. Add another inline R chunk and put some code in here that would result in a plot. What does a plot defined in an inline code chunk look like? Compare your answer with your neighbors’.
+- **Stretch goal**: Update the date field in the YAML so that the date at the time of knitting the document is printed.
+
+
+    
+
 # The data
 
 ## Kaggle: SD Burritos
 
-The data come from [Kaggle.com](https://www.kaggle.com/srcole/burritos-in-san-diego):
+The data frame comes from [Kaggle.com](https://www.kaggle.com/srcole/burritos-in-san-diego):
 
->Mexican cuisine is often the best food option is southern California. And the 
->burrito is the hallmark of delicious taco shop food: tasty, cheap, and filling. 
->Appropriately, an effort was launched to critique burritos across the county 
->and make this data open to the lay burrito consumer. 
+
+> [Mexican cuisine is often the best food option is southern California. And the 
+burrito is the hallmark of delicious taco shop food: tasty, cheap, and filling. 
+Appropriately, an effort was launched to critique burritos across the county 
+and make this data open to the lay burrito consumer.](https://www.kaggle.com/srcole/burritos-in-san-diego) 
+
 
 ```{r load-data}
 burritos <- read_csv("../data/burritos_01022018.csv")
@@ -34,16 +48,16 @@ burritos fromd `r burritos %>% count(Location) %>% nrow()` restaurants.
 
 There are 10 core dimensions of the San Diego burrito:
 
- 1. Volume 
- 1. Tortilla quality 
- 1. Temperature 
- 1. Meat quality 
- 1. Non-meat filling quality 
- 1. Meat-to-filling ratio 
- 1. Uniformity 
- 1. Salsa quality 
- 1. Flavor synergy 
- 1. Wrap integrity
+ i. Volume 
+ #. Tortilla quality 
+ #. Temperature 
+ #. Meat quality 
+ #. Non-meat filling quality 
+ #. Meat-to-filling ratio 
+ #. Uniformity 
+ #. Salsa quality 
+ #. Flavor synergy 
+ #. Wrap integrity
 
 All of these measures (except for Volume) are rated on a scale from 0 to 5, 0 
 being terrible, and 5 being optimal. Other information available for each 
@@ -83,6 +97,7 @@ expensive burrito makes it difficult to assess the strength of the relationship.
 
 ```{r}
 ggplot(data = burritos, mapping = aes(x = Cost, y = overall)) +
-  geom_point() +
+  geom_point() + 
+  #  xlim(0, 13) +
   labs(title = "Overall rating vs. cost", y = "Overall rating")
 ```

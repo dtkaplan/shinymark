@@ -1,0 +1,76 @@
+---
+title: "R in Markdown"
+author: "Danny Kaplan"
+date: "January 15, 2019"
+output:
+  html_document:
+    highlight: pygments
+    theme: cosmo
+---
+
+```{r load-packages}
+library(tidyverse)
+library(shiny)
+```
+
+## Preliminary tasks
+
+1. It's a good practice to load the major packages for a document in a "setup" or "load packages" chunk. But the output from that chunk is a poor way for a reader to start off with a document.
+    * Add a chunk option to `load-packages` to suppress the output. (Hint: the option begins with `i`.)
+2. Add an inline R chunk to your document so that the current date/time show up here: XXXX. Try to put the date in italics.
+
+## Add a plot chunk
+
+3. Make chunk producing a simple plot using the `mtcars` data frame built into R.
+
+## Inline code
+
+Typical uses of inline code ...
+
+1. Avoiding hard-coding of numbers. (They become out of date.)
+    - Bad: Our analysis involved 51 cars.
+    - Better: Our analysis involved `r nrow(mtcars)` cars.
+    
+    
+```{r car_t_test, echo = FALSE}
+mod <- lm(mpg ~ disp + cyl, data = mtcars)
+```
+
+2. Reporting of results calculated elsewhere.
+    - Bad: Keeping displacement constant, an additional cylinder is associated with a loss of about 1.6 miles-per-gallon.
+    - Better: ...with a `r ifelse(coef(mod)["cyl"] > 0, "gain", "loss")` of about `r round(abs(coef(mod)["cyl"]), 1)` miles-per-gallon.
+
+**Stretch goal**: Update the date field in the YAML so that the date at the time of knitting the document is printed. (Hint: You can put YAML strings in quotation marks.)
+
+
+## Add a table chunk
+
+5. Display the first 5 rows of the `mtcars` data frame.
+
+
+**Stretch goal**: Modify the chunk with the table to prettify the display. There are many possibilities but try `knitr::kable()`.
+
+
+
+## Things can go wrong.
+
+### A chunk with an error
+
+```{r neg_logs, eval = FALSE}
+log(-10)
+```
+
+### Trying to put a plot inline
+
+Here's the creation of a plot:
+```{r carplot}
+Plot1 <-
+  ggplot(data = mtcars, aes(x = hp, y = mpg, color = cyl)) +
+  geom_point()
+```  
+
+Let's put the plot inline^[Change `rbogus` to `r` to activate the inline code], right here: `rbogus Plot1`.
+
+```{r another_error, error = TRUE}
+sqrt(-5)
+```
