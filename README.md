@@ -1,12 +1,12 @@
 # shinymark
 
-Materials for the *Introduction to Shiny and R Markdown* workshop at RStudio::conf 2019
+Materials for the *Introduction to Shiny and R Markdown* workshop at rstudio::conf 2019
 
 ---
 
 ## Locating the materials
 
-* Option 1 - :cloud: RStudio Cloud: [bit.ly/shiny-rmd-cloud](bit.ly/shiny-rmd-cloud)
+* Option 1 - :cloud: RStudio Cloud: [bit.ly/shinymark](bit.ly/shinymark)
 
 * Option 2 - :computer: Local installation: [bit.ly/shiny-rmd-repo](bit.ly/shiny-rmd-repo)
 
@@ -18,7 +18,7 @@ Materials for the *Introduction to Shiny and R Markdown* workshop at RStudio::co
 
 #### :computer: 09:00 - 10:30: Session 1 - Getting started with Markdown
   - 00 - [Welcome](00-welcome/00-welcome.pdf) Getting started instructions + motivation + demo
-  - 01 - Composing your prose with Markdown:
+  - 01 - Composing prose with Markdown:
     - Text and headers
     - Links and images
     - Math text
@@ -49,13 +49,17 @@ Materials for the *Introduction to Shiny and R Markdown* workshop at RStudio::co
 
 #### :computer: 15:30 - 17:00: Session 4 - First dip into interactivity
   - Dashboards
-  - Embedding htmlwidgets in documents
-  - Embedding Shiny apps in documents
+  - Embedding htmlwidgets in R Markdown documents
+  - Embedding Shiny apps in R Markdown documents
   - Troubleshooting tips + Q & A
 
 ### Day 2: January 16, 2019
 
-Maybe an RMarkdown shiny document so that we can isolate the UI components and server logic from the programming involved in an app.
+The activities will be based on files in the `apps/` directory. Each file includes a suffix like `_01`, `_02`, .... 
+
+- Start by opening the `_01` file. Edit that to complete the activity.
+- In the follow-up exercises, you can keep on going with the file you started with, *or* if you get lost ... 
+- Open up the next file (e.g. `_02`) so that you have a working document for the next activity.
 
 #### :computer: 09:00 - 10:30: Session 1 - Getting started with Shiny
   - 04 - Getting started with Shiny:
