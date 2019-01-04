@@ -4,6 +4,7 @@ author: "Danny Kaplan"
 date: "`r Sys.Date()`"
 output: 
   html_document: 
+    fig_caption: yes
     highlight: pygments
     theme: cosmo
   word_document: 
@@ -21,11 +22,12 @@ library(tidyverse)
 
 ## Background
 
-The *[Economist](https://www.economist.com/)* has a quick visualization of currency exchange rates based on "purchasing power parity." The visualization is based on just one item: the [Big Mac](https://www.mcdonalds.com/us/en-us/product/big-mac.html) sandwich at McDonalds. The index is therefore called the Big Mac index, and is described [here](https://www.economist.com/news/2018/07/11/the-big-mac-index). Figure 1 shows an example of  how *The Economist* presents the data:
+The *[Economist](https://www.economist.com/)* has a quick visualization of currency exchange rates based on "purchasing power parity." The visualization is based on just one item: the [Big Mac](https://www.mcdonalds.com/us/en-us/product/big-mac.html) sandwich at McDonalds. The index is therefore called the Big Mac index, and is described [here](https://www.economist.com/news/2018/07/11/the-big-mac-index). Figure 1 shows an example of  how *The Economist* presents the data, from WE WILL PUT A REFERENCE HERE.
 
-```{r economist-graphic, echo = FALSE, fig.cap = "*The Economist*'s presentation of the Big Mac Index" }
+```{r economist-graphic, echo = FALSE, fig.cap = "Figure 1: *The Economist*'s presentation of the Big Mac Index" }
 knitr::include_graphics("images/20180120_FNC577_0.png")
 ```
+
 
 
 Data behind the Big Mac Index is published [here on GitHub](https://github.com/TheEconomist/big-mac-data). For convenience, it's available in `data/big-mac-index.csv`.
