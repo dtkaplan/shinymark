@@ -8,7 +8,7 @@ Materials for the *Introduction to Shiny and R Markdown* workshop at rstudio::co
 
 * Option 1 - :cloud: RStudio Cloud: [bit.ly/shinymark](bit.ly/shinymark)
 
-* Option 2 - :computer: Local installation: [bit.ly/shiny-rmd-repo](bit.ly/shiny-rmd-repo)
+* Option 2 - :computer: Local installation: [github.com/dtkaplan/shinymark](github.com/dtkaplan/shinymark)
 
 ---
 
