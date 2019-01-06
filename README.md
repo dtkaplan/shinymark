@@ -29,7 +29,7 @@ Materials for the *Introduction to Shiny and R Markdown* workshop at rstudio::co
 #### :coffee: 10:30 - 11:00: Morning break
 
 #### :computer: 11:00 - 12:00: Session 2 - Putting the R in R Markdown
-  - 02 - Structuring your analysis with R Markdown:
+  - 02 - Putting  the R in R Markdown:
     - Embedding R code -- in chunks and inline
     - Chunk and global options
     - Other languages
@@ -41,16 +41,16 @@ Materials for the *Introduction to Shiny and R Markdown* workshop at rstudio::co
 
 #### :computer: 13:00 - 15:00: Session 3 - Upping your R Markdown game
   - Tables
+  - Parameterized reports
   - Bibliography and citation
   - Templates
-  - Parameterized reports
-
+  
 #### :coffee: 15:00 - 15:30: Afternoon break
 
 #### :computer: 15:30 - 17:00: Session 4 - First dip into interactivity
-  - Dashboards
   - Embedding htmlwidgets in R Markdown documents
   - Embedding Shiny apps in R Markdown documents
+  - First practice with shiny widgets. Use `runtime: shiny`
   - Troubleshooting tips + Q & A
 
 ### Day 2: January 16, 2019
