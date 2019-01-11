@@ -99,7 +99,7 @@ The activities will be based on files in the `apps/` directory. Each file includ
 
 ## Setup instructions
 
-### Install
+### Install all packages we will need
 
 ```
 from_cran <- c("shiny", "rmarkdown", 
@@ -110,10 +110,8 @@ from_cran <- c("shiny", "rmarkdown",
 install.packages(from_cran, repos = "http://cran.rstudio.com")
 ```
 
-### Load
+### Load all packages we just installed
 
 ```
-library(shiny)
-library(rmarkdown)
-... # load the remaining packages similarly
+lapply(from_cran, library, character.only = TRUE)
 ```
