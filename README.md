@@ -8,7 +8,10 @@ Materials for the *Introduction to Shiny and R Markdown* workshop at rstudio::co
 
 * Option 1 - :cloud: RStudio Cloud: [bit.ly/shinymark](bit.ly/shinymark)
 
-* Option 2 - :computer: Local installation: [github.com/dtkaplan/shinymark](github.com/dtkaplan/shinymark#setup-instructions)
+    - If you do not already have an RStudio.cloud account, you will be prompted to login via Google or create a new account.
+    - When you are
+
+* Option 2 - :computer: Local installation: [github.com/dtkaplan/shinymark](github.com/dtkaplan/shinymark)
 
 ---
 
@@ -28,7 +31,7 @@ Materials for the *Introduction to Shiny and R Markdown* workshop at rstudio::co
 
 #### :coffee: 10:30 - 11:00: Morning break
 
-#### :computer: 11:00 - 12:00: Session 2 - Putting the R in R Markdown
+#### :computer: 11:00 - 12:30: Session 2 - Putting the R in R Markdown
   - 02 - Putting  the R in R Markdown:
     - Embedding R code -- in chunks and inline
     - Chunk and global options
@@ -37,9 +40,9 @@ Materials for the *Introduction to Shiny and R Markdown* workshop at rstudio::co
     - Output formats
     - Your turn: Restructure from plain R Markdown to xaringan slides or Tufte document
   
-#### :fork_and_knife: 12:00 - 13:00: Lunch
+#### :fork_and_knife: 12:30 - 13:30: Lunch
 
-#### :computer: 13:00 - 15:00: Session 3 - Upping your R Markdown game
+#### :computer: 13:30 - 15:00: Session 3 - Upping your R Markdown game
   - Tables
   - Parameterized reports
   - Bibliography and citation
@@ -71,16 +74,16 @@ The activities will be based on files in the `apps/` directory. Each file includ
 
 #### :coffee: 10:30 - 11:00: Morning break
 
-#### :computer: 11:00 - 12:00: Session 2 - Understanding reactivity
+#### :computer: 11:00 - 12:30: Session 2 - Understanding reactivity
   - 05 - Understanding reactivity:
     - Reactivity 101
     - Reactive flow
     - Implementation
     - Render functions
   
-#### :fork_and_knife: 12:00 - 13:00: Lunch
+#### :fork_and_knife: 12:30 - 13:30: Lunch
 
-#### :computer: 13:00 - 15:00: Session 3 - Designing UI
+#### :computer: 13:30 - 15:00: Session 3 - Designing UI
   - Interface builder functions
   - Tabs
   - shinythemes
