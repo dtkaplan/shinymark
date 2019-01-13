@@ -19,9 +19,20 @@ library(shiny)
     * Add a chunk option to `load-packages` to suppress the output. (Hint: the option begins with `i`.)
 2. Add an inline R chunk to your document so that the current date/time show up here: XXXX. Try to put the date in italics.
 
-## Add a plot chunk
+### Add a plot chunk
 
 3. Make chunk producing a simple plot using the `mtcars` data frame built into R.
+4. Add a label to the chunk in (3) and to each unlabelled chunk.
+5. Change the chunk options (echo, eval, include, message, warning) to explore what changes in the output. Then, decide on an appropriate option for each of the chunks. Compare your choices to your neighbors’.
+6. Turn the following into a proper chunk for R evaluation rather than just display of code.
+
+```
+names(mtcars)
+mtcars %>% 
+  summarize_all(median)
+```
+
+7. Returning to the chunk you made in (6), what does the option collapse (set to TRUE or FALSE) do? What is the default setting for this option? 
 
 ## Inline code
 
@@ -48,8 +59,8 @@ mod <- lm(mpg ~ disp + cyl, data = mtcars)
 5. Display the first 5 rows of the `mtcars` data frame.
 
 
-```{r the_table}
-knitr::kable(head(mtcars))
+```{r}
+"Your command goes here."
 ```
 
 
@@ -61,12 +72,12 @@ knitr::kable(head(mtcars))
 
 A chunk with an error ...
 
-```{r neg_logs, eval = FALSE}
+```{r eval = FALSE}
 log(-10)
 ```
 
 ... and another such chunk.
 
-```{r another_error, eval = FALSE}
+```{r  eval = FALSE}
 sqrt(-5)
 ```
