@@ -33,7 +33,7 @@ knitr::include_graphics("images/20180120_FNC577_0.png")
 Data behind the Big Mac Index is published [here on GitHub](https://github.com/TheEconomist/big-mac-data). For convenience, it's available in `data/big-mac-index.csv`.
 
 ```{r load-data, message=FALSE, warning=FALSE}
-Big_mac <- read_csv("data/big-mac-index.csv")
+Big_mac <- read_csv("../data/big-mac-index.csv")
 ```
 
 Year is `r params$year` and the countries are `r paste(params$countries, collapse = ", ")`

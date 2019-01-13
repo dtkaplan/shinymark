@@ -1,0 +1,93 @@
+---
+title: "Not Yet a Dashboard"
+output: 
+  html_document: 
+    theme: journal
+---
+
+```{r setup, include=FALSE}
+# library(flexdashboard)
+library(tidyverse)
+library(xts)
+```
+
+
+### What's this about?
+
+Add in a video playing <https://www.youtube.com/embed/U3ZaNcSkttw>
+
+Hints:
+
+* No R code needed!
+* In your browser, navigate to the video
+* Under "Share" select "embed"
+* Copy the HTML iframe code
+
+### For dashboard
+
+IGNORE this section until we come to the "As a Dashboard" activity
+
+1. Uncomment `library(flexdashboard)` above.
+2. Move this to the YAML section, replacing `html_document`
+
+```
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: scroll
+```
+
+### Map
+
+Put a map of Austin, TX here.
+
+Hint:
+
+* Use `leaflet` package to generate the widget
+* Latitude/Longitude of Austin: 30.27° N, 97.75° W
+* Functions to use: `leaflet::leaflet()`, `setView()`, `addTiles()`
+  * alternative to `setView()`: use `addMarkers()` and let the server figure out the initial scale.
+
+```{r drawAustin}
+library(leaflet)
+# Your commands go here
+```
+
+### Big Mac Index
+
+Hints:
+
+* Use `plotly` library.
+* Create a ggplot2 graphic like the one below.
+* call `ggplotly()` with the graphic as an argument
+
+```{r echo = FALSE}
+Big_mac <- read_csv("../data/big-mac-index.csv")
+countries <- c("Sweden", "Norway", "Russia", "United States", "Korea", "Japan", "Malaysia", "India", "China", "Pakistan", "Taiwan", "Britain", "Ecuador", "Argentina")
+Just_my_countries <-
+  Big_mac %>%
+  filter(name %in% countries) %>%
+  mutate(year = lubridate::year(date), month = lubridate::month(date)) %>%
+  filter(year == 2017) %>%
+  select(name, month, dollar_price) %>%
+  tidyr::spread(key = month, value = dollar_price) %>%
+  mutate(name = reorder(name, `7`, I) )
+My_graphic <- 
+  ggplot(data = Just_my_countries, aes(y = name)) +
+  geom_segment(aes(x = `1`, xend = `7`, y = name, yend = name)) +
+  geom_point(aes(x = `1`), color = "red", size = 5) +
+  geom_point(aes(x = `7`), color = "blue", size = 5) +
+  labs(x = "Price in USD")
+# Add a line here to display My_graphic
+```
+
+### Time Series
+
+```{r time_series}
+# A demo
+library(dygraphs)
+Apple <- read_csv("../data/AAPL.csv") 
+Apple <- Apple %>%  as.xts(order.by = Apple$Date) 
+dygraph(Apple[ , c("Low", "High", "Close")], "Apple stock price") %>%
+  dySeries() %>%
+  dyRangeSelector(height = 20)
+```

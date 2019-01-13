@@ -1,0 +1,89 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+```
+
+### Once upon a time ...
+
+```{r}
+```
+
+Once upon a time, in a land far, far away. There lived a dragon.
+
+![A fire-breathing dragon](https://vignette.wikia.nocookie.net/emporea/images/d/d9/Black_dragon_preloader.jpg/revision/latest/scale-to-width-down/430?cb=20160216171424)
+
+*** 
+
+#### Comments
+
+* Dragons are not real animals. 
+    - There are electric eels, but I don't know about any fire-breathing animals.
+* We need to be more specific about the year. Once-upon-a-time is too vague.
+    - Suggestion 1: 1280 AD
+    - Suggestion 2: Roman Era. But did they have dragons?
+    - But not a lava-filled pre-historic time. 
+
+### The Princess
+
+The princess loved unicorns, but not princes.
+
+![A unicorn](https://i.pinimg.com/originals/00/20/8a/00208aa103b9f215e87ad0ba4e221746.png)
+
+*** 
+
+#### Marketing rationale
+
+Loving unicorns is actually pretty common. I've known little girls who loved unicorns. This should be excellent market placement for our story.
+
+#### Comments/Questions
+
+* Are we being too heteronormative to make this about princesses and princes. 
+* Will the sex police read too much into the unicorn? Maybe a pony would be better.
+* The water-color ~~dragon~~ unicorn with a rainbow really removes this from any historical context.
+    - We need a unicorn in a genuine historical setting.
+* Get a landscape unicorn picture. This one hides the narrative.
+
+-----
+
+Note that the caption is being displayed at the bottom. Do we want this?
+
+### ... and she loved to eat ...
+
+![](https://cdn.instructables.com/FYJ/GFKS/J7RS7L2O/FYJGFKSJ7RS7L2O.LARGE.jpg?auto=webp&width=827)
+
+***
+
+Big Macs. But in order to be able to feed the ~~dragon~~ unicorn, they need to be cheap. So where to set this drama?
+
+```{r, out.width = "90%"}
+Big_mac <- read_csv("../data/big-mac-index.csv")
+countries <- c("Sweden", "Norway", "Russia", "United States", "Korea", "Japan", "Malaysia", "India", "China", "Pakistan", "Taiwan", "Britain", "Ecuador", "Argentina")
+Just_my_countries <-
+  Big_mac %>%
+  filter(name %in% countries) %>%
+  mutate(year = lubridate::year(date), month = lubridate::month(date)) %>%
+  filter(year == 2017) %>%
+  select(name, month, dollar_price) %>%
+  tidyr::spread(key = month, value = dollar_price) %>%
+  mutate(name = reorder(name, `7`, I) )
+My_graphic <- 
+  ggplot(data = Just_my_countries, aes(y = name)) +
+  geom_segment(aes(x = `1`, xend = `7`, y = name, yend = name)) +
+  geom_point(aes(x = `1`), color = "red", size = 5) +
+  geom_point(aes(x = `7`), color = "blue", size = 5) +
+  labs(x = "Price in USD")
+My_graphic
+```
+
+#### Comments
+
+* This will encourage the readers to become data scientists.
+* Make sure cross-marketing deal is in place with McD.....lds
