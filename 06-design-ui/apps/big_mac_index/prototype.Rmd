@@ -1,0 +1,64 @@
+---
+title: "Prototype for the Big Mac exchange-rate index"
+author: "D. Kaplan"
+date: "1/16/2019"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##  Introduction
+
+> *"Premature optimization is the root of all evil."* -- Donald Knuth
+
+I like to  prototype shiny apps as an Rmd document. This has several advantages:
+
+* Avoids start-up work of arranging a UI.
+* Makes it easy to include narrative, including comments on the design from your co-workers.
+* Let's you display the code as you like.
+
+For some clients, a document is the way to go, anyways.
+
+
+```{r load_data, message = FALSE}
+# NOTE: If you want to deploy this app on a server (e.g. shinyapps.io)
+#       you need to move all data files needed into the app's directory
+month_names <- c("Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec")
+
+Raw <- readr::read_csv("../../../data/big-mac-index.csv")
+Big_mac_data  <- 
+  Raw %>%
+  mutate(year  = lubridate::year(date),
+         month = month_names[lubridate::month(date)])
+```
+
+
+
+This chunk is going to create some controls. Note that since the controls are ultimately HTML, I can create them in one place and display them in another.
+
+```{r make_controls, eval = TRUE}
+countries <- unique(Big_mac_data$name)
+years <- unique(Big_mac_data$year)
+months <-  unique(Big_mac_data$month)
+country <- selectInput("countries", "Comparison countries:", choices = countries, multiple = TRUE )
+year  <- selectInput("year", "Year:", choices = years)
+month <- selectInput("month", "Months:", choices = months, multiple = TRUE)
+```
+
+`r country` | `r year` | `r month`
+------------|----------|----------
+Choose many | Just 1   | As many as you like.
+
+Comment: Watch out. You'll have to reset the choices for "Months" whenever a new year is selected.
+
+```{r some_server_code}
+for_one_year <- reactive(Big_mac_data %>% filter(year %in% input$year))
+observe({
+  updateSelectInput(session, inputId = "month", choices = unique(for_one_year()$month))
+})
+```
+
