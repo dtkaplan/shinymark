@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Shiny the Friendly Unicorn"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
@@ -9,6 +9,7 @@ output:
 library(flexdashboard)
 library(tidyverse)
 library(plotly)
+library(shiny)
 ```
 
 ### Once upon a time ...
@@ -87,3 +88,14 @@ My_graphic
 
 * This will encourage the readers to become data scientists.
 * Make sure cross-marketing deal is in place with McD.....lds
+
+### To control the unicorn, the princess used Shiny.
+
+```{r}
+radioButtons("food", "Feed the unicorn", c("hay", "corn", "kibble", "Big Mac"))
+sliderInput("amount_of_food", "How much? (handfuls)", min = 0, max = 20, value = 10)
+```
+
+***
+
+Continue the story by adding your own shiny controls!

@@ -51,10 +51,11 @@ Materials for the *Introduction to Shiny and R Markdown* workshop at rstudio::co
 #### :coffee: 15:00 - 15:30: Afternoon break
 
 #### :computer: 15:30 - 17:00: Session 4 - First dip into interactivity
+  - Slides: `03B-interactivity-on-the-cheap.key`
   - Embedding htmlwidgets in R Markdown documents
-  - Embedding Shiny apps in R Markdown documents
+  - Dashboards
   - First practice with shiny widgets. Use `runtime: shiny`
-  - Troubleshooting tips + Q & A
+  
 
 ### Day 2: January 16, 2019
 
