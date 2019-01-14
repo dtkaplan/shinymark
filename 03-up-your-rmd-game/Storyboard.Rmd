@@ -3,6 +3,7 @@ title: "Shiny the Friendly Unicorn"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
