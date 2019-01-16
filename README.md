@@ -40,9 +40,9 @@ Materials for the *Introduction to Shiny and R Markdown* workshop at rstudio::co
     - Output formats
     - Your turn: Restructure from plain R Markdown to xaringan slides or Tufte document
   
-#### :fork_and_knife: 12:30 - 13:30: Lunch
+#### :fork_and_knife: 12:30 - 14:00: Lunch
 
-#### :computer: 13:30 - 15:00: Session 3 - Upping your R Markdown game
+#### :computer: 14:00 - 15:00: Session 3 - Upping your R Markdown game
   - Tables
   - Parameterized reports
   - Bibliography and citation
